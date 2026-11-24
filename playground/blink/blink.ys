@@ -1,0 +1,2 @@
+read_verilog ./playground/blink/blink.sv
+synth_ecp5 -json ./playground/blink/blink.json
