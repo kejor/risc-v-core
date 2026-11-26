@@ -19,5 +19,10 @@ $(BLINK_DIR)/blink.bit: $(BLINK_DIR)/blink.config
 	docker run --rm --mount type=bind,src=$(CURDIR),dst=/workspace yosys-oss-cad-suite:latest \
 		/bin/bash -c "ecppack /workspace/playground/blink/blink.config /workspace/playground/blink/blink.bit"
 
+.PHONY: prog
 prog: $(BUILD_DIR)/ulx3s.bit
 	openFPGALoader -b ulx3s $(BUILD_DIR)/ulx3s.bit
+
+.PHONY: reset
+reset:
+	openFPGALoader -b ulx3s --detect -f
